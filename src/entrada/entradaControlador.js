@@ -1,17 +1,18 @@
 var entradaModelo = require('./entradaModelo');
+var layout = require('../layout');
 
 function listar (req, res){
-    res.render('entrada/listar', { 
+    layout('entrada/listar', { 
         titulo: 'Entradas',
         entradas: entradaModelo.listar() 
-    });
+    }, res);
 }
 
 function mostrarNuevo(req, res) {
-    res.render('entrada/nuevo', {
+    layout('entrada/nuevo', {
         titulo: 'Nueva entrada',
         entrada: {}
-    });
+    }, res);
 }
 
 function crear(req, res) {
@@ -22,26 +23,26 @@ function crear(req, res) {
 function listarUno(req, res) {
     var id = parseInt(req.params.id, 10);
     var entrada = entradaModelo.buscar(id);
-    res.render('entrada/ver', {
+    layout('entrada/ver', {
         entrada: entrada
-    });
+    }, res);
 }
 
 function mostrarEditar(req, res) {
     var id = parseInt(req.params.id, 10);
     var entrada = entradaModelo.buscar(id);
-    res.render('entrada/nuevo', {
+    layout('entrada/nuevo', {
         titulo: 'Nueva entrada',
         entrada: entrada
-    });
+    }, res);
 }
 
 function editar(req, res) {
     var id = parseInt(req.params.id, 10);
     var entrada = entradaModelo.editar(id, req.body.titulo, req.body.texto);
-    res.render('entrada/ver', {
+    layout('entrada/ver', {
         entrada: entrada
-    });
+    }, res);
 }
 
 function eliminar(req, res) {

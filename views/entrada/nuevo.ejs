@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title><%= titulo %></title>
-  </head>
-  <body>
-    <h1><%= titulo %></h1>
-    <form action="/entrada/<%= entrada.id ? entrada.id + '/editar' : 'nuevo' %>" 
-        method="POST">
-        <div>
-            <label for="titulo">Titulo</label>
-            <br>
-            <input type="text" name="titulo" value="<%= entrada.titulo %>" />
-        </div>
-        <div>
-            <label for="texto">Texto</label>
-            <br>
-            <textarea name="texto" cols="30" rows="10"><%= entrada.texto %></textarea>
-        </div>
-        <button type="submit"><%= entrada.id ? 'Guardar' : 'Crear' %> Entrada</button>
-        <a href="/entrada">Regresar</a>
-    </form>
-  </body>
-</html>
+<h1><%= titulo %></h1>
+<form action="/entrada/<%= entrada.id ? entrada.id + '/editar' : 'nuevo' %>" 
+    method="POST">
+    <div>
+        <label for="titulo">Titulo</label>
+        <br>
+        <input type="text" name="titulo" value="<%= entrada.titulo %>" />
+    </div>
+    <div>
+        <label for="texto">Texto</label>
+        <br>
+        <textarea name="texto" cols="30" rows="10"><%= entrada.texto %></textarea>
+    </div>
+    <button type="submit"><%= entrada.id ? 'Guardar' : 'Crear' %> Entrada</button>
+    <a href="/entrada">Regresar</a>
+</form>

@@ -1,47 +1,48 @@
 var usuarioModelo = require('./usuarioModelo');
+var layout = require('../layout');
 
 function listar (req, res){
-    res.render('usuario/listar', { 
+    layout('usuario/listar', { 
         titulo: 'Usuarios',
         usuarios: usuarioModelo.listar() 
-    });
+    }, res);
 }
 
 function mostrarNuevo(req, res) {
-    res.render('usuario/nuevo', {
+    layout('usuario/nuevo', {
         titulo: 'Nuevo usuario',
         usuario: {}
-    });
+    }, res);
 }
 
 function crear(req, res) {
     usuarioModelo.agregar(req.body.usuario, req.body.nombre, req.body.password);
-    res.redirect('/usuario');
+    res.redirect('/login');
 }
 
 function listarUno(req, res) {
     var id = parseInt(req.params.id, 10);
     var usuario = usuarioModelo.buscar(id);
-    res.render('usuario/ver', {
+    layout('usuario/ver', {
         usuario: usuario
-    });
+    }, res);
 }
 
 function mostrarEditar(req, res) {
     var id = parseInt(req.params.id, 10);
     var usuario = usuarioModelo.buscar(id);
-    res.render('usuario/nuevo', {
+    layout('usuario/nuevo', {
         titulo: 'Editar usuario',
         usuario: usuario
-    });
+    }, res);
 }
 
 function editar(req, res) {
     var id = parseInt(req.params.id, 10);
     var usuario = usuarioModelo.editar(id, req.body.usuario, req.body.nombre, req.body.password);
-    res.render('usuario/ver', {
+    layout('usuario/ver', {
         usuario: usuario
-    });
+    }, res);
 }
 
 function eliminar(req, res) {

@@ -39,10 +39,18 @@ function eliminar(id) {
     usuarios.splice(indice, 1);
 }
 
+function login(usuario, password) {
+    return usuarios.filter(function(e) {
+        return e.usuario === usuario 
+            && e.password === password;
+    }).shift();
+}
+
 module.exports = {
     listar: listar,
     buscar: buscar,
     agregar: agregar,
     editar: editar,
-    eliminar: eliminar
+    eliminar: eliminar,
+    login: login
 };
