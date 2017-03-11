@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= titulo %></title>
+  </head>
+  <body>
+    <h1><%= titulo %></h1>
+    <form action="/usuario/<%= usuario.id ? usuario.id + '/editar' : 'nuevo' %>" 
+        method="POST">
+        <div>
+            <label for="nombre">Nombre</label>
+            <br>
+            <input type="text" name="nombre" value="<%= usuario.nombre %>" />
+        </div>
+        <div>
+            <label for="usuario">Usuario</label>
+            <br>
+            <input type="text" name="usuario" value="<%= usuario.usuario %>" />
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <br>
+            <input type="password" name="password" value="<%= usuario.password %>" />
+        </div>
+        <button type="submit"><%= usuario.id ? 'Guardar' : 'Crear' %> Usuario</button>
+        <a href="/usuario">Regresar</a>
+    </form>
+  </body>
+</html>
